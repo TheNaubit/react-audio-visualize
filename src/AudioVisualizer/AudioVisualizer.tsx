@@ -9,7 +9,7 @@ import {
   useEffect,
 } from "react";
 import { type dataPoint } from "./types";
-import { calculateBarData, draw } from "./utils";
+import { calculateBarData, draw, reusableAudioContext } from "./utils";
 
 interface Props {
   /**
@@ -109,7 +109,7 @@ const AudioVisualizer: ForwardRefExoticComponent<
         }
 
         const audioBuffer = await blob.arrayBuffer();
-        const audioContext = new AudioContext();
+        const audioContext = reusableAudioContext;
         await audioContext.decodeAudioData(audioBuffer, (buffer) => {
           if (!canvasRef.current) return;
           setDuration(buffer.duration);

@@ -10,6 +10,8 @@ interface CustomCanvasRenderingContext2D extends CanvasRenderingContext2D {
   ) => void;
 }
 
+export const reusableAudioContext = new AudioContext();
+
 export const calculateBarData = (
   buffer: AudioBuffer,
   height: number,
